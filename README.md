@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Emyboy/project_tracker.svg?branch=api)](https://travis-ci.org/Emyboy/project_tracker)[![Coverage Status](https://coveralls.io/repos/github/Emyboy/project_tracker/badge.svg?branch=api)](https://coveralls.io/github/Emyboy/project_tracker?branch=master)
+[![Build Status](https://travis-ci.org/Emyboy/project_tracker.svg?branch=api)](https://github.com/Emyboy/project_tracker/tree/api) [![Coverage Status](https://coveralls.io/repos/github/Emyboy/project_tracker/badge.svg?branch=api)](https://coveralls.io/github/Emyboy/project_tracker?branch=api)
 
 # project_tracker
 The Project Management Tool Favored by Developers.
