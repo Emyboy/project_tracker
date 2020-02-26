@@ -2,16 +2,22 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import morgan from 'morgan';
 import bodyParser from 'body-parser';
+import setupSwagger from './src/utils/swagger';
 
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
 
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
+
+setupSwagger(app, process.env.PORT);
 
 app.get('/api', (req, res) => {
 	res.status(200).json({
