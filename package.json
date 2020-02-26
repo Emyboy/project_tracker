@@ -1,0 +1,43 @@
+{
+  "name": "project_tracker",
+  "version": "1.0.0",
+  "description": "The Project Management Tool Favored by Developers.",
+  "main": "App.js",
+  "scripts": {
+    "server": "NODE_ENV=production babel-node App.js",
+    "start": "nodemon --exec babel-node App.js",
+    "test": "NODE_ENV=testing npm run db-undo-migration && NODE_ENV=testing npm run db-migrate && NODE_ENV=testing nyc --reporter=html --reporter=text mocha --require @babel/register src/tests/*.js  --require @babel/polyfill --require @babel/register --timeout 100000000 --exit",
+    "init": "eslint --init"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Emyboy/project_tracker.git"
+  },
+  "keywords": [],
+  "author": "Ifeora Chukwuemeka (iDegin)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Emyboy/project_tracker/issues"
+  },
+  "homepage": "https://github.com/Emyboy/project_tracker#readme",
+  "dependencies": {
+    "@babel/cli": "^7.8.3",
+    "@babel/core": "^7.8.3",
+    "@babel/node": "^7.8.3",
+    "@babel/polyfill": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
+    "@sendgrid/mail": "^6.5.1",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.2",
+    "sequelize": "^5.21.5",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
