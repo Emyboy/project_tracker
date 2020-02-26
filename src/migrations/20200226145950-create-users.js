@@ -8,8 +8,26 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      username: {
+        type: Sequelize.STRING(30),
+        allowNull: false,
+        unique: true
+      },
+      email: {
+        type: Sequelize.STRING(70),
+        allowNull: false,
+        unique: true,
+        validate: {
+          isEmail: true
+        }
+      },
+      avatar_url:{
+        type: Sequelize.STRING(999),
+        allowNull: false,
+      },
+      password: {
+        type: Sequelize.STRING(999),
+        allowNull: false
       },
       createdAt: {
         allowNull: false,
