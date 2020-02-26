@@ -10,24 +10,25 @@ module.exports = {
       },
       username: {
         type: Sequelize.STRING(30),
-        allowNull: false,
-        unique: true
+        allowNull: false
       },
       email: {
-        type: Sequelize.STRING(70),
+        type: Sequelize.STRING(50),
         allowNull: false,
-        unique: true,
         validate: {
           isEmail: true
         }
       },
-      avatar_url:{
-        type: Sequelize.STRING(999),
-        allowNull: false,
-      },
       password: {
         type: Sequelize.STRING(999),
         allowNull: false
+      },
+      avatar_url: {
+        type: Sequelize.STRING(999),
+        defaultValue: 'https://cdn.onlinewebfonts.com/svg/img_568657.png',
+        validate: {
+          isUrl: true
+        }
       },
       createdAt: {
         allowNull: false,
