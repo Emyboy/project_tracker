@@ -6,13 +6,13 @@
   "scripts": {
     "server": "NODE_ENV=production babel-node src/App.js",
     "start": "nodemon --exec babel-node src/App.js",
-    "test": "npm run db-migrate:test && npm run db-seeder:test && NODE_ENV=test nyc --require @babel/register  mocha ./src/__tests__/*.test.js --timeout 20000 --exit",
+    "test": "npm run db-migrate:test && NODE_ENV=test nyc --require @babel/register  mocha ./src/__tests__/*.test.js --timeout 20000 --exit",
     "db-migrate": "sequelize db:migrate --env production",
     "db-migrate:dev": "sequelize db:migrate --env development",
     "db-seeder:dev": "sequelize db:seed:all --env development",
-    "db-seeder:test": "sequelize db:seed:all --env test",
     "db-delete:dev": "sequelize db:migrate:undo:all --env development",
-    "db-migrate:test": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test"
+    "db-migrate:test": "sequelize db:migrate:undo:all --env test && sequelize db:migrate --env test",
+    "db:reset":  "sequelize db:migrate:undo:all && sequelize db:drop && sequelize db:create && sequelize db:migrate"
   },
   "repository": {
     "type": "git",

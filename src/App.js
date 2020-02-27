@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import '@babel/polyfill';
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
@@ -17,6 +18,9 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cors());
+
+setupSwagger(app, process.env.PORT);
+
 app.use('/api/v1', apiRoutes);
 
 app.get('/api', (req, res) => {
@@ -31,7 +35,6 @@ app.get('*', (req, res) => {
 	});
 });
 
-setupSwagger(app, process.env.PORT);
 
 app.listen(port, () => {
 	console.log(`Server is running on port ${port}`);

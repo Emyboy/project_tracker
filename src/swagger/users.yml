@@ -59,7 +59,7 @@ definitions:
     - email
     - new_role
 
-/users/signup:
+/signup:
   post:
     tags:
       - Users
@@ -69,14 +69,14 @@ definitions:
     parameters:
       - in: body
         name: user
-        description: The user to be created
+        description: Signup Success
         schema:
           type: object
           required:
             - username
             - email
             - password
-            - confirmPassword
+            - message
           properties:
             username:
               type: string
@@ -84,17 +84,17 @@ definitions:
               type: string
             password:
               type: string
-            confirmPassword:
+            message:
               type: string
     responses:
       201:
-        description: Account created successfuly
+        description: Signup Success
         schema:
           type: object
           properties:
             data:
               $ref: '#/definitions/User'
-            msg:
+            message:
               type: string
       400:
         description: Wrong data sent
