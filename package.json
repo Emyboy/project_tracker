@@ -2,10 +2,10 @@
   "name": "project_tracker",
   "version": "1.0.0",
   "description": "The Project Management Tool Favored by Developers.",
-  "main": "App.js",
+  "main": "src/App.js",
   "scripts": {
-    "server": "NODE_ENV=production babel-node App.js",
-    "start": "nodemon --exec babel-node App.js",
+    "server": "NODE_ENV=production babel-node src/App.js",
+    "start": "nodemon --exec babel-node src/App.js",
     "test": "npm run db-migrate:test && npm run db-seeder:test && NODE_ENV=test nyc --require @babel/register  mocha ./src/__tests__/*.test.js --timeout 20000 --exit",
     "db-migrate": "sequelize db:migrate --env production",
     "db-migrate:dev": "sequelize db:migrate --env development",

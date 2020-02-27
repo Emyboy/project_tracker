@@ -6,7 +6,7 @@ const setupSwagger = (app) => {
     info: {
       title: 'Project Tracker',
       version: '1.0.0',
-      description: 'This lets developers keep track of project tasks',
+      description: 'This lets developers keep track of the project tasks',
     },
     basePath: '/api/v1',
     securityDefinitions: {
@@ -28,6 +28,7 @@ const setupSwagger = (app) => {
     res.setHeader('Content-Type', 'application/json');
     res.send(swaggerSpec);
   });
-  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+  app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 };
+
 export default setupSwagger;
