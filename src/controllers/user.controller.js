@@ -1,4 +1,5 @@
 import { Users } from '../database/models';
+import AuthHelper from '../helpers/auth.helper';
 
 export default class UserController {
 
@@ -10,7 +11,8 @@ export default class UserController {
     static async signupUser(req, res) {
         try {
             const { username, email, password } = req.body;
-            const user = await Users.create({ username, email, password })
+            const hashedPassword = AuthHelper.EncryptPassword(password)
+            const user = await Users.create({ username, email, password: hashedPassword })
             res.status(200).json({
                 message: 'Signup Success',
                 user
