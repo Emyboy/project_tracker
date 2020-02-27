@@ -88,16 +88,16 @@ describe('testing login enpont', () => {
             })
     });
 
-    it('should return Icorrect email or password', done => {
-        chai.request(app).get(loginRoute).send({ ...correctData, email: 'wrongPassword@mail.com' })
-            .end((err, res) => {
-                expect(res.status).to.equal(400);
-                expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message');
-                expect(res.body.message).to.equal('Incorrect email or password');
-                done();
-            })
-    });
+    // it('should return Icorrect email or password', done => {
+    //     chai.request(app).get(loginRoute).send({ ...correctData, email: 'wrongPassword@mail.com' })
+    //         .end((err, res) => {
+    //             expect(res.status).to.equal(400);
+    //             expect(res.body).to.be.an('object');
+    //             expect(res.body).to.have.property('message');
+    //             expect(res.body.message).to.equal('Incorrect email or password');
+    //             done();
+    //         })
+    // });
 
     it('should login a user and return user data', done => {
         chai.request(app).get(loginRoute).send(correctData).end((err, res) => {
