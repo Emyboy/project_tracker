@@ -91,13 +91,3 @@ Set eslint to run `as you type`
 * Users should be able to chat on Barefoot Nomad
 
 
-## Contributors
-
-ABIZEYIMANA Victor – [@victor-abz](https://github.com/victor-abz)
-
-ISHIMWE Gad - [@gadishimwe](https://github.com/gadishimwe)
-
-IRAGENA Eric - [@ericvand](https://github.com/erickvand)
-
-HARINTWARI Gustave - [@higustave-ops](https://github.com/higustave-ops)
-

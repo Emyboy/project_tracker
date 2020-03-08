@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="011a19b2-b796-491a-8bab-074cb5e73c09" name="Default Changelist" comment="" />
+    <list default="true" id="011a19b2-b796-491a-8bab-074cb5e73c09" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/middlewares/user.middleware.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/__tests__/user.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/__tests__/user.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/controllers/user.controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/controllers/user.controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/routes/user.route.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/routes/user.route.js" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -26,10 +33,7 @@
         <entry file="file://$PROJECT_DIR$/src/__tests__/user.test.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="161">
-              <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
+              <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -58,7 +62,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1616" />
@@ -175,7 +179,9 @@
       <workItem from="1582777518045" duration="1738000" />
       <workItem from="1582782836049" duration="1107000" />
       <workItem from="1582827064455" duration="596000" />
-      <workItem from="1582837817921" duration="462000" />
+      <workItem from="1582837817921" duration="594000" />
+      <workItem from="1582918046531" duration="58000" />
+      <workItem from="1583555066628" duration="61000" />
     </task>
     <servers />
   </component>
@@ -185,11 +191,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3903000" />
+    <option name="totallyTimeSpent" value="4154000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="916" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="916" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49892932" visible="true" weight="0.14512041" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -225,10 +230,7 @@
     <entry file="file://$PROJECT_DIR$/src/__tests__/user.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
-          <caret line="29" column="55" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
+          <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
         </state>
       </provider>
     </entry>

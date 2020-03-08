@@ -1,5 +1,6 @@
 import chai from 'chai';
 import chaiHTTP from 'chai-http';
+import { describe, it } from 'mocha';
 const { expect } = chai;
 import app from '../App';
 
@@ -18,6 +19,10 @@ const withoutEmail = {
 
 const signupRoute = '/api/v1/signup';
 const loginRoute = '/api/v1/login';
+const userRoute = '/api/v1/user';
+
+let token;
+let user_id;
 
 describe('testing signup endpoint', () => {
 
@@ -88,16 +93,16 @@ describe('testing login enpont', () => {
             })
     });
 
-    // it('should return Icorrect email or password', done => {
-    //     chai.request(app).get(loginRoute).send({ ...correctData, email: 'wrongPassword@mail.com' })
-    //         .end((err, res) => {
-    //             expect(res.status).to.equal(400);
-    //             expect(res.body).to.be.an('object');
-    //             expect(res.body).to.have.property('message');
-    //             expect(res.body.message).to.equal('Incorrect email or password');
-    //             done();
-    //         })
-    // });
+    it('should return Icorrect email or password', done => {
+        chai.request(app).get(loginRoute).send({ ...correctData, email: 'wrongPassword@mail.com' })
+            .end((err, res) => {
+                expect(res.status).to.equal(400);
+                expect(res.body).to.be.an('object');
+                expect(res.body).to.have.property('message');
+                expect(res.body.message).to.equal('Incorrect email or password');
+                done();
+            })
+    });
 
     it('should login a user and return user data', done => {
         chai.request(app).get(loginRoute).send(correctData).end((err, res) => {
@@ -107,7 +112,24 @@ describe('testing login enpont', () => {
             expect(res.body.message).to.equal('Login Success');
             expect(res.body.user).to.be.an('object');
             expect(res.body).to.have.property('token');
+            token = res.body.totken;
+            user_id = res.body.user.id;
             done();
         })
-    })
+    });
+
+})
+
+describe('testing user endpoint', () => {
+
+    // it('should return user data by user_id', done => {
+    //     chai.request(app).get(`${userRoute}/${user_id}`)
+    //         .set('Content-Type', 'application/x-www-form-urlencoded')
+    //         .set('authorization', token)
+    //         .end((err, res) => {
+    //             expect(res.status).to.equal(200);
+    //             done();
+    //         })
+    // })
+
 })

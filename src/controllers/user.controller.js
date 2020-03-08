@@ -63,4 +63,58 @@ export default class UserController {
             // res.send(error);
         }
     }
+
+    /**
+     * @description - This method gets a user by id
+     * @param {Object} req 
+     * @param {Object} res 
+     */
+    static async getUserById(req, res) {
+        const { user_id } = req.params;
+        try {
+            const user = await Users.findOne({
+                where: { id: user_id }
+            });
+            res.status(200).json(user);
+        } catch (error) {
+            res.status(400).json(ErrorHelper.handleAuthInputError(error));
+        }
+    }
+
+    /**
+     * @description - This updates a user's profile
+     * @param {Object} req 
+     * @param {Object} res 
+     */
+    static async updateUserProfile(req, res) {
+        const { user_id } = req.params;
+        const { username, avatar_url } = req.body;
+        try {
+            const updatedUser = await Users.update({ username, avatar_url }, {
+                where: { id: user_id }
+            })
+            res.send(updatedUser)
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    /**
+     * @description - this method deletes a users profile
+     * @param {Object} req 
+     * @param {Object} res 
+     */
+    static async deleteUserProfile(req, res) {
+        const { user_id } = req.params;
+        try {
+            const deletedProfile = await Users.destroy({
+                where: { id: user_id }
+            });
+            res.json(deletedProfile)
+        } catch (error) {
+            res.json(error);
+        }
+    }
+
+
 }
