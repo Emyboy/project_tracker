@@ -45,7 +45,7 @@ describe('testing signup duplication', () => {
     it('should return username already in use', done => {
         chai.request(app).post(signupRoute)
             .send(correctData).end((err, res) => {
-                expect(res.status).to.equal(401);
+                expect(res.status).to.equal(400);
                 expect(res.body.message).to.equal('username already in use');
                 expect(res.body.error).to.be.an('object');
                 expect(res.body.error.errors).to.be.an('array');
@@ -56,7 +56,7 @@ describe('testing signup duplication', () => {
     it('should return email already in use', done => {
         chai.request(app).post(signupRoute)
             .send({ ...correctData, username: 'another_name' }).end((err, res) => {
-                expect(res.status).to.equal(401);
+                expect(res.status).to.equal(400);
                 expect(res.body.message).to.equal('email already in use');
                 expect(res.body.error).to.be.an('object');
                 expect(res.body.error.errors).to.be.an('array');
@@ -71,7 +71,7 @@ describe('testing for empty fields', () => {
     it('should return email is empty', done => {
         chai.request(app).post(signupRoute)
             .send(withoutEmail).end((err, res) => {
-                expect(res.status).to.equal(401);
+                expect(res.status).to.equal(400);
                 expect(res.body).to.have.property('message');
                 expect(res.body.message).to.equal('email is empty');
                 done();

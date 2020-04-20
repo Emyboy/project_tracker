@@ -19,7 +19,7 @@ export default class UserController {
                 user
             })
         } catch (error) {
-            res.status(401).json(ErrorHelper.handleAuthInputError(error))
+            res.status(400).json(ErrorHelper.handleAuthInputError(error))
         }
     }
 

@@ -33,17 +33,48 @@ export default class ProjectController {
      * @param {Oject} req 
      * @param {Oject} res 
      */
-    static async getUserProject(req, res){
+    static async getAllUsersProjects(req, res){
         const { user_id } = req.params;
         try {
             const userProjects = await Projects.findAll({
                 where: { user_id }
             });
-            res.status(200).json(userProjects);
+            res.status(200).json(userProjects)
         } catch (error) {
             res.status(500).json(error);
         }
     }
+
+    /**
+     * @description - This gets a single project by id
+     * @param {object} req 
+     * @param {object} res 
+     */
+    static async getAUserProject(req, res){
+        const { user_id, project_id } = req.params;
+        try{
+            const project = await Projects.findAll({
+                where: {
+                    id: project_id,
+                    user_id
+                }
+            });
+            if(project.length > 0){
+                res.status(200).json({
+                    message: 'success',
+                    project
+                })
+            }else {
+                res.status(404).json({
+                    status: 404,
+                    message: 'Projct Not Found',
+                })
+            }
+        } catch (error){
+            res.send(error);
+        }
+    }
+
     
 
 }
