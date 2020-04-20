@@ -10,6 +10,7 @@ export default class UserController {
      * @param {Object} res 
      */
     static async signupUser(req, res) {
+        // TODO - send welcome email
         try {
             const { username, email, password } = req.body;
             const hashedPassword = AuthHelper.EncryptPassword(password)

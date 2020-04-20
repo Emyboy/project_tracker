@@ -23,6 +23,7 @@ const userRoute = '/api/v1/user';
 
 let token;
 let user_id;
+let user;
 
 describe('testing signup endpoint', () => {
 
@@ -112,8 +113,9 @@ describe('testing login enpont', () => {
             expect(res.body.message).to.equal('Login Success');
             expect(res.body.user).to.be.an('object');
             expect(res.body).to.have.property('token');
-            token = res.body.totken;
+            token = res.body.token;
             user_id = res.body.user.id;
+            user = res.body.user;
             done();
         })
     });
@@ -122,14 +124,30 @@ describe('testing login enpont', () => {
 
 describe('testing user endpoint', () => {
 
-    // it('should return user data by user_id', done => {
-    //     chai.request(app).get(`${userRoute}/${user_id}`)
-    //         .set('Content-Type', 'application/x-www-form-urlencoded')
-    //         .set('authorization', token)
-    //         .end((err, res) => {
-    //             expect(res.status).to.equal(200);
-    //             done();
-    //         })
-    // })
+    it('should return user data by user_id', done => {
+        chai.request(app).get(`${userRoute}/${user_id}`)
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('authorization', token)
+            .end((err, res) => {
+                expect(res.status).to.equal(401);
+                expect(res.body).to.be.an('object');
+                expect(res.body).to.have.property('message');
+                expect(res.body.message).to.equal("Unauthorized - Auth Error!");
+                done();
+            })
+    });
+    it('should return user data by user_id', done => {
+        chai.request(app).get(`${userRoute}/${user_id}`)
+            .set('Content-Type', 'application/x-www-form-urlencoded')
+            .set('authorization', 'berere'+' '+token)
+            .end((err, res) => {
+                expect(res.status).to.equal(200);
+                expect(res.body).to.be.an("object");
+                expect(res.body).to.have.property("id");
+                expect(res.body.id).to.be.a('number');
+                expect(res.body.username).to.equal(user.username);
+                done();
+            })
+    });
 
 })
