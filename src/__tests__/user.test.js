@@ -124,7 +124,7 @@ describe('testing login enpont', () => {
 
 describe('testing user endpoint', () => {
 
-    it('should return user data by user_id', done => {
+    it('should return auth error', done => {
         chai.request(app).get(`${userRoute}/${user_id}`)
             .set('Content-Type', 'application/x-www-form-urlencoded')
             .set('authorization', token)
@@ -136,6 +136,7 @@ describe('testing user endpoint', () => {
                 done();
             })
     });
+    
     it('should return user data by user_id', done => {
         chai.request(app).get(`${userRoute}/${user_id}`)
             .set('Content-Type', 'application/x-www-form-urlencoded')
@@ -149,5 +150,32 @@ describe('testing user endpoint', () => {
                 done();
             })
     });
+
+});
+
+describe("Testing update profile routes", () => {
+    
+    it("should return user's updated profile", done => {
+        chai.request(app).put(`${userRoute}/${user_id}`)
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('authorization', token)
+        .end((err, res) => {
+            expect(res.status).to.equal(401);
+            expect(res.body).to.have.property('message');
+            expect(res.body.message).to.equal("Unauthorized - Auth Error!")
+            done();
+        })
+    });
+
+    it("should return auth error", done => {
+        chai.request(app).put(`${userRoute}/${user_id}`)
+        .set('Content-Type', 'application/x-www-form-urlencoded')
+        .set('authorization', "bere"+ " "+token)
+        .end((err, res) => {
+            expect(res.status).to.equal(200);
+            expect(res.body).to.be.an('object');
+            done();
+        })
+    })
 
 })

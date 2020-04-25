@@ -90,13 +90,17 @@ export default class UserController {
     static async updateUserProfile(req, res) {
         const { user_id } = req.params;
         const { username, avatar_url } = req.body;
+        console.log(req.body)
         try {
             const updatedUser = await Users.update({ username, avatar_url }, {
                 where: { id: user_id }
             })
-            res.send(updatedUser)
+            res.status(200).json({
+                message: "Profile Updated",
+                updatedUser
+            })
         } catch (error) {
-            res.send(error)
+            res.status(500).json(error)
         }
     }
 

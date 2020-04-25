@@ -17,7 +17,7 @@ const {
 userRoutes.post('/signup', signupUser);
 userRoutes.get('/login', loginUser);
 userRoutes.get('/user/:user_id', verifyAuthHeader, getUserById);
-userRoutes.put('/user/:user_id', updateUserProfile);
-userRoutes.delete('/user/:user_id', deleteUserProfile);
+userRoutes.put('/user/:user_id',verifyAuthHeader, updateUserProfile);
+userRoutes.delete('/user/:user_id', verifyAuthHeader, deleteUserProfile);
 
 export default userRoutes;
