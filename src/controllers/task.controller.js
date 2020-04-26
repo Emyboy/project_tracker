@@ -17,7 +17,7 @@ export default class {
             });
         } catch (error) {
             res.status(400).json({
-                message: 'Error Added Task',
+                message: 'Error Adding Task',
                 error
             });
         }
