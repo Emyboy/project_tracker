@@ -23,6 +23,10 @@ export default class AuthHelper {
         return bcrypt.compareSync(password, hash, (err, res) => res);
     }
 
+    /**
+     * @description - This method generate a token
+     * @param {object} payload 
+     */
     static generateToken(payload) {
         return jwt.sign(payload, process.env.PRIVATE_KEY, { expiresIn: '24h' });
     }

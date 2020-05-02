@@ -176,6 +176,6 @@ describe("Testing update profile routes", () => {
             expect(res.body).to.be.an('object');
             done();
         })
-    })
+    });
 
 })
