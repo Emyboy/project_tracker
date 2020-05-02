@@ -15,7 +15,6 @@ export default class UserMiddleware {
     
     static async verifyAuthHeader(req, res, next) {
         const { authorization } = req.headers;
-        console.log('authenticating  ================', authorization, '=================');
         try {
             const token = await authorization.split(' ')[1];
             const payload = await jwt.verify(token, process.env.PRIVATE_KEY);
