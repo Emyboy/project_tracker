@@ -34,10 +34,22 @@ describe('testing project end points', () => {
             chai.request(app).post('/api/v1/project/1').send(projectData).set('Content-Type', 'application/x-www-form-urlencoded')
             .set('authorization', 'berere'+' '+token).end((err, res) => {
                 expect(res.status).to.equal(200);
+                expect(res.body).to.have.property('message');
+                expect(res.body.message).to.equal('Project Created');
+                expect(res.body).to.have.property('project');
+                expect(res.body.project).to.be.an('object');
+                expect(res.body.project).to.have.property('id');
+                expect(res.body.project.id).to.be.a('number');
                 done();
             })
         })
 
+    });
+
+    describe('testing get all user project route', () => {
+        
+        it('should ')
     })
+    
 
 })

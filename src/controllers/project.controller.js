@@ -29,33 +29,15 @@ export default class ProjectController {
     }
 
     /**
-     * @description - This method get all user's projects
-     * @param {Oject} req 
-     * @param {Oject} res 
-     */
-    static async getAllUsersProjects(req, res){
-        const { user_id } = req.params;
-        try {
-            const userProjects = await Projects.findAll({
-                where: { user_id }
-            });
-            res.status(200).json(userProjects)
-        } catch (error) {
-            res.status(500).json(error);
-        }
-    }
-
-    /**
      * @description - This gets a single project by id
      * @param {object} req 
      * @param {object} res 
      */
-    static async getAUserProject(req, res){
-        const { user_id, project_id } = req.params;
+    static async getAUserProjects(req, res){
+        const { user_id } = req.params;
         try{
             const project = await Projects.findAll({
                 where: {
-                    id: project_id,
                     user_id
                 }
             });
@@ -71,6 +53,51 @@ export default class ProjectController {
                 })
             }
         } catch (error){
+            res.send(error);
+        }
+    }
+
+
+    /**
+     * @description - This method edits a project
+     * @param {Object} req 
+     * @param {Object} res 
+     */
+    static async editUserProject(req, res){
+        const { project_id, user_id } = req.params;
+        try {
+            const editedProject = await Projects.update(req.body, {
+                where: {
+                    id: project_id, user_id
+                }
+            });
+            if(editedProject[0] === 1){
+                const newVersion = await Projects.findAll({ where: { id: project_id }});
+                res.status(200).json({
+                    message: 'saved',
+                    newVersion
+                })
+            }else {
+                res.status(400).json({
+                    message: "Bad request"
+                })
+            }
+        } catch (error) {
+            res.status(500).json(error);
+        }
+    }
+
+    /**
+     * @description - this method deletes are project
+     * @param {Object} req 
+     * @param {Object} res 
+     */
+    static async deleteProject(req, res) {
+        const { project_id } = req.params;
+        try {
+            const deletedProject = await Projects.destroy({ where: { id: project_id }})
+            res.send(deletedProject);
+        } catch (error) {
             res.send(error);
         }
     }
