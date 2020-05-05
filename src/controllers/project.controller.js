@@ -95,13 +95,19 @@ export default class ProjectController {
     static async deleteProject(req, res) {
         const { project_id } = req.params;
         try {
-            const deletedProject = await Projects.destroy({ where: { id: project_id }})
-            res.send(deletedProject);
+            const deletedProject = await Projects.destroy({
+                where: { id: project_id }
+            });
+            // res.json(deletedProject)
+            if(deletedProject === 0){
+                res.status(400).json({ message: 'Request Error!' })
+            }else res.status(200).json({
+                message: 'Deleted',
+            })
         } catch (error) {
-            res.send(error);
+            res.status(500).json(error);
         }
     }
-
     
 
 }

@@ -22,7 +22,6 @@ export default class UserMiddleware {
                 next();
             }
         } catch (error) {
-            console.log('===Token Error==============', error, '===================');
             res.status(401).json({
                 status: 401,
                 message: 'Unauthorized - Auth Error!'

@@ -14,9 +14,9 @@ const {
 } = ProjectController;
 const projectRoute = express.Router();
 
-projectRoute.put('/project/:project_id/:user_id', editUserProject);
+projectRoute.delete('/project/:project_id', verifyAuthHeader, deleteProject);
+projectRoute.put('/project/:project_id/:user_id', verifyAuthHeader, editUserProject);
 projectRoute.post('/project/:user_id', verifyAuthHeader, createProject);
-projectRoute.get('/project/:user_id',  getAUserProjects);
-projectRoute.delete('/project/:project_id', deleteProject);
+projectRoute.get('/project/:user_id', verifyAuthHeader,  getAUserProjects);
 
 export default projectRoute;
