@@ -5,6 +5,7 @@ export default class ErrorHelper {
      * @param {Object} error 
      */
     static handleAuthInputError(error){
+        console.log('========== ERROR ============', error);
         const { type, path } = error.errors[0];
         switch (type) {
             case 'unique violation':

@@ -24,9 +24,14 @@ setupSwagger(app, process.env.PORT);
 app.use('/api/v1', apiRoutes);
 
 app.get('/api', (req, res) => {
-	res.status(200).json({
-		message: 'Welcome to the Project Tracker API'
-	});
+	res.status(200).send(`
+		<div style="margin: 10%">
+			<h1>Welcome To Project Tracker API</h1>
+			<button><a href='https://project-tracker-api.herokuapp.com/api/v1/docs'>
+				Go To Docs</a>
+			</button>
+		</div>
+	`)
 });
 
 app.get('*', (req, res) => {
