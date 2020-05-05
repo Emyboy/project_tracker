@@ -28,7 +28,7 @@ export default class AuthHelper {
      * @param {object} payload 
      */
     static generateToken(payload) {
-        return jwt.sign(payload, process.env.PRIVATE_KEY, { expiresIn: '24h' });
+        return jwt.sign(payload, process.env.NODE_ENV === 'test' ? 'SOMETHING' : process.env.PRIVATE_KEY, { expiresIn: '24h' });
     }
 }
 
