@@ -7,7 +7,6 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import setupSwagger from './utils/swagger';
 import apiRoutes from './routes/api.route';
-console.log(process.env)
 dotenv.config();
 
 const app = express();
